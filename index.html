@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue To Do List</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="app">
@@ -20,8 +23,13 @@
         <main>
             <div class="container">
                 <ul>
-                    <li v-for="todolist in todolists">
-                        {{ todolist }}
+                    <li v-for="(todolist, index) in todolists"
+                    :class="{
+                        'done': todolist.done == true,
+                    }"
+                    >
+                        {{ todolist.text }}
+                        <button @click="removeTodolist()">
                             X
                         </button>
                     </li>
@@ -30,7 +38,7 @@
         </main>
     </div>
     
-    
+    <!--JS-->
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
     <script src="./js/script.js"></script>
 </body>
